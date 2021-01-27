@@ -84,7 +84,7 @@ Facebook 于 2013 年推出了 Graph Search 产品，其核心技术就是通过
 一个金融知识图谱可以包含“电话”、“公司”的实体，电话和电话之间的关系可以是“通话”关系，而且每个公司它也会有固定的电话。 
 
 ![image-20210112162617357](https://gitee.com/zgf1366/pic_store/raw/master/img/20210112182031.png)
- 
+
 
 #### 5.3.1 定义具体的业务问题
 
@@ -221,7 +221,90 @@ Facebook 于 2013 年推出了 Graph Search 产品，其核心技术就是通过
 
 其实有了这样的一个知识图谱，我们很容易回答哪些公司有可能会被这次的负面事件所影响。当然，仅仅是“有可能”，具体会不会有强相关性必须由数据来验证。所以在这里，知识图谱的好处就是把我们所需要关注的范围很快给我们圈定。接下来的问题会更复杂一些，比如既然我们知道公司3有可能被这次事件所影响，那具体影响程度有多大？ 对于这个问题，光靠知识图谱是很难回答的，必须要有一个影响模型、以及需要一些历史数据才能在知识图谱中做进一步推理以及计算。
 
-## 六、总结
+## 六、知识图谱项目
+
+![image-20210120235616944](https://gitee.com/zgf1366/pic_store/raw/master/img/20210120235617.png)
+
+### 1. CYC
+
+- http://www.cyc.com/
+
+- 是在1984年由Douglas Lenat开始创建。最初的目标是要建立人类最大的常识知识库。典型的常识知识如“Every tree is a plant”，"Plants die eventually"等
+- Cyc知识库主要由术语Tems和新言Assertions组成。Terms包含概念关系和实体的定义。Assertions用来建立Terms之间的关系，这既包括事实Fact描述，也包含规则Rule的描述
+- 最新的Cyc知识库包含有50万条Terms和700万条Assertions。Cyc的主要特点是基于形式化的知识表示方法来刻画知识。形式化的优势是可以支持复杂的推理。但过于形式化也导致知识库的扩展性和应用的灵活性不够。Cyc提供开放版本OpenCyc
+
+### 2. Wordnet
+
+- http://wordnet.princeton.conWordNet
+- 是最著名的词典知识库，主要用于词义消歧。WordNet由普林斯顿大学认识科学实验室从1985年开始开发
+- WordNet主要定义了名词、动词、形容词和副词之间的语义关系。例如名词之间的上下位关系（如：“猫科动物”是“猫”的上位词）,动词之间的蕴含关系（如：“打舞”蕴含着“睡眠”）等
+- WordNet3.0已经包含超过15万个词和20万个语义关系
+
+![image-20210120235938207](https://gitee.com/zgf1366/pic_store/raw/master/img/20210120235938.png)
+
+### 3.ConceptNet
+
+http://www.conceptnet.io/
+
+- ConceptNet是常识知识库。最早源于MIT媒体实验室的Open MindCommon Sense(OMCS)项目。OMCS项目是由著名人工智能专家Marvin Minsky于1999年建议创立
+- ConceptNet主要依靠互联网众包、专家创建和游戏三种方法来构建。新版本导入大量开放的结构化数据，如DBPedia、Wikinary,Wordnet等
+- ConceptNet知识库以三元组形式的关系型知识构成。ConceptNet5版本已经包含有2800万关系描述。与Cyc相比，ConceptNet采用了非形式化、更加接近自然语言的描述，而不是像Cyc那样采用形式化的谓词逻辑
+- 与链接数据和谷歌知识图谱相比，ConceptNet比较侧重于词与词之间的关系。从这个角度看，ConceptNet更加接近于WordNet,但是又比WordNet包含的关系类型多。此外，ConceptNet完全免费开放，并支持多种语言
+
+### 4. Freebase
+
+![image-20210121000214128](https://gitee.com/zgf1366/pic_store/raw/master/img/20210121000214.png)
+
+### 5. Wikidata
+
+![image-20210121000258059](https://gitee.com/zgf1366/pic_store/raw/master/img/20210121000258.png)
+
+### 6. DBPedia
+
+- http://dbpedia.org
+
+- DBPedia是早期的语义网项目。DBPedia意指数据库版本的Wikipedia,是从Wikipedia抽取出来的链接数据集。DBPedia采用了一个较为严格的本体，包含人、地点、音乐、电影、组织机构、物种、疾病等类定义
+- 此外，DBPedia还与Freebase,OpenCYC、Bio2RDF等多个数据集建立了数据链接。DBPedia采用RDF语义数据模型，总共包含30亿RDF三元组
+
+### 7.YAGO
+
+- YAGO是由德国马普研究所研制的链接数据库。YAGO主要集成了Wikipedia、WordNet和GeoNames三个来源的数据。YAGO将WordNet的词汇定义与Wikipedia的分类体系进行了融合集成，使得YAGO具有更加丰富的实体分类体系
+- YAGO还考虑了时间和空间知识，为很多知识条目增加了时间和空间维度的属性描述。目前，YAGO包含1.2亿条三元组知识。YAGO是IBMWatson的后端知识库之一
+
+### 8.Babelnet
+
+- http://babelnet.org/
+- BabelNet是类似于WordNet的多语言词典知识库。BabelNet的目标是解决WordNet在非英语语种中数据缺乏的问题。BabelNet采用的方法是将WordNel词典与Wikipedia百科集成
+- 首先建立WordNet中的词与Wikipedia的页面标题的映射，然后利用Wikipedia中的多语言徒接，再辅机器翻译技术，来给WordNet增加多种语言的词汇
+- BabelNet3.7包含了271种语言，1400万同义词组36.4万词语关系和3.8亿从Wikipedia中抽取的链接关系，总计超过19亿RDF三元组。BabelNet集成了WordNet在词语关系上的优势和Wikipedia在多语言语料方而的优势，构建成功了目前最大规模的多言词典知识库。
+
+### 9. NELL
+
+- NELL(Never-Ending Language Learner)是卡内基梅隆大学开发的知识库。NELL主要采用互联网挖掘的方法从Web自动抽取三元组知识
+- NELL的基本理念是：给定一个初始的本体（少量类和关系的定义）和少量样本，让机器能够通过自学习的方式不断的从Web学习和抽取新的知识。目前NELL已经抽取了400多万条高置信度三元组知识
+- http://rtw.ml.cmu.edu
+
+### 10. 微软 Concept Graph
+
+- Concept Graph是以概念层次体系为中心的知识图谱。与Freebase等知识图谱不同，Concept Graph以概念定义和概念之间的ISA关系为主
+- 给定一个概念如“Microsoft”，Concept Graph返回一组与“微软”有IsA关系概念组，如：“Company”，“Software Company”，"Largest OS Vender"等。这被称为概念化“Conceptualization"
+- Concept Graph可以用于短文本理解和语义消歧中。例如，给定一个短文本“the engineer is eating the apple”，可以利用Concept Graph来正确理解其中“apple”的含义是“吃的苹果”还是“苹果公司”。微软发布的第一个版本包含超过540万的概念，1255万的实体，和8760万的关系。Concept Graph主要通过从互联网和网络日志中挖掘来构建
+
+### 11. OpenKG
+
+![image-20210121000851147](https://gitee.com/zgf1366/pic_store/raw/master/img/20210121000851.png)
+
+### 12. Zhishi.me
+
+![image-20210121000929088](https://gitee.com/zgf1366/pic_store/raw/master/img/20210121000929.png)
+
+### 13. cnSchema
+
+- cnSchema.org是一个基于社区维护的开放的知识图谱Schema标准。cnSchema分类（classes)、数据类型（data type)的词汇集包括了上千种概念pes)、属性（propertities)和关系（relations)等常用概念定义,以支持知识图谱数据的通用性、复用性和流动性
+- 结合中文的特点，我们复用、连接并扩展了Schema.org,Wikidata,Wikipedia等已有的知识图谱Schema标准，为中文领域的开放知识图谱、聊天机器人、搜索引擎优化等提供可供参考和扩展的数据描述和接口定义标准
+- http://cnschema.org
+
+## 七、总结
 
 首先，知识图谱是一个比较新的工具，它的主要作用还是在于分析关系，尤其是深度的关系。所以在业务上，首先要确保它的必要性，其实很多问题可以用非知识图谱的方式来解决。
 
